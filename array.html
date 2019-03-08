@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var array=[
+		{id:1,name:'小明',sex:'男'},
+		{id:2,name:'小刚',sex:'男'},
+		{id:3,name:'小红',sex:'女'},
+		{id:4,name:'小花',sex:'女'},
+		{id:5,name:'小甜甜',sex:'女'},
+	]
+	var obj={},newArr=[];
+	array.forEach(function(item,suffix){
+		//根据对象的属性是唯一的，将值作为对象的属性名
+		if(!obj[item.sex]){
+			var arr=[];
+			arr.push(item);
+			newArr.push(arr);
+			obj[item.sex]=item;
+		}else{
+			newArr.forEach(function(value,index){
+				//如果已经存在  就循环新组的值将值插入属性相同的数组里   为了防止重复添加   只要和第一个比较就可以了
+				if(value[0].sex==item.sex){
+					value.push(item)
+				}
+			})
+		}
+	})
+	console.log(obj);
+	console.log(newArr)
+</script>
+</html>
